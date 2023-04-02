@@ -1,23 +1,32 @@
 import React, { useContext } from 'react';
 import HeroContext from '../context/HeroContext';
+import '../styles/Search.css';
 
 function Search() {
-  const { character, setCharacter, handleSubmit } = useContext(HeroContext);
+  const { character, setCharacter, handleSubmit, showError, error, loading } = useContext(HeroContext);
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
+    <main className="search-container">
+      <form onSubmit={handleSubmit} className="form-container">
         <label>
           Digite o nome do personagem:
           <input
             onChange={(e) => setCharacter({name: e.target.value}) }
             type="text"
             value={character ? character.name : ''}
+            className={loading ? 'hidden' : ''}
           />
         </label>
-        <button type="submit">Buscar</button>
+        <button
+          type="submit"
+          className={loading ? 'hidden' : ''}
+          >
+            Buscar
+          </button>
+          {loading && <div className="loader"></div>}
         <span></span>
       </form>
+      {showError &&<p>{error}</p>}
     </main>
   );
 }

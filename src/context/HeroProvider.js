@@ -5,12 +5,15 @@ import { getCharacter } from '../services/fetchAPI';
 
 function HeroProvider({ children }) {
   const INITIAL_STATE = {
-    data: {},
+    id: '',
+    path: '',
     name: '',
+    extension: '',
   }
   const [character, setCharacter] = useState(INITIAL_STATE);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,13 +21,21 @@ function HeroProvider({ children }) {
     setLoading(true);
     try {
       const characterData = await getCharacter(character.name);
-      setCharacter(characterData);
+      console.log('here', characterData);
+      setCharacter({
+        id: characterData.id,
+        path: characterData.thumbnail.path,
+        name: characterData.name,
+        extension: characterData.thumbnail.extension,
+      });
       setLoading(false);
       setError(null);
+      setShowError(false);
     } catch (error) {
       setCharacter({});
       setLoading(false);
-      setError(error.message);
+      setError('Personagem não encontrado');
+      setShowError(true);
     }
   };
 
@@ -34,7 +45,9 @@ function HeroProvider({ children }) {
     loading,
     setCharacter,
     handleSubmit,
-  }), [character, error, loading]);
+    showError,
+    setShowError,
+  }), [character, error, loading, showError]);
 
   return (
     <HeroContext.Provider value={ context }>

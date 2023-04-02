@@ -1,19 +1,22 @@
 import React, { useContext } from 'react';
 import HeroContext from '../context/HeroContext';
+import '../styles/HeroCard.css';
 
-function HecoCard() {
+function HeroCard() {
   const { character } = useContext(HeroContext);
-  const { path, extension } = character.thumbnail;
+  const { id, name, path, extension } = character;
   return (
-    <main>
-      <p>{character.id}</p>
-      <p>{character.name}</p>
-      <img
-        src={`${path}/portrait_xlarge.${extension}`}
-        alt={character.name}
-      />
+    <main className="hero-card-container">
+      <section className="hero-card">
+        <p>{id}</p>
+        <p>{name}</p>
+        <img
+          src={`${path}/portrait_xlarge.${extension}`}
+          alt={name}
+        />
+      </section>
     </main>
   );
 }
 
-export default HecoCard;
+export default HeroCard;
