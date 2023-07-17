@@ -1,0 +1,71 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 2rem 0;
+  background-color: #000;
+}
+
+.header__card {
+  width: 300px;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header__image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.header__description {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 1rem;
+  background-color: #1f1f1f;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.header--ironman {
+  background-color: #ed1d24;
+}
+
+.header--spiderman {
+  background-color: #ec1d24;
+}
+
+.header--captainamerica {
+  background-color: #032542;
+}
+
+@media screen and (max-width: 768px) {
+  .header__title {
+    font-size: 1.2rem;
+  }
+
+  .header__image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .header__description {
+    font-size: 0.8rem;
+  }
+}
