@@ -11,22 +11,22 @@ function Search() {
         <label>
           Digite o nome do personagem:
           <input
-            onChange={(e) => setCharacter({name: e.target.value}) }
+            onChange={(e) => setCharacter({ ...character, name: e.target.value })}
             type="text"
-            value={character ? character.name : ''}
+            value={character.name}
             className={loading ? 'hidden' : ''}
           />
         </label>
         <button
           type="submit"
           className={loading ? 'hidden' : ''}
-          >
-            Buscar
-          </button>
-          {loading && <div className="loader"></div>}
+        >
+          Buscar
+        </button>
+        {loading && <div className="loader"></div>}
         <span></span>
       </form>
-      {showError &&<p>{error}</p>}
+      {showError && <p>{error}</p>}
     </main>
   );
 }

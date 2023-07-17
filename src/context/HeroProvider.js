@@ -17,7 +17,7 @@ function HeroProvider({ children }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setCharacter({});
+    setCharacter(INITIAL_STATE);
     setLoading(true);
     try {
       const characterData = await getCharacter(character.name);
@@ -32,7 +32,7 @@ function HeroProvider({ children }) {
       setError(null);
       setShowError(false);
     } catch (error) {
-      setCharacter({});
+      setCharacter(INITIAL_STATE);
       setLoading(false);
       setError('Personagem não encontrado');
       setShowError(true);
@@ -50,8 +50,8 @@ function HeroProvider({ children }) {
   }), [character, error, loading, showError]);
 
   return (
-    <HeroContext.Provider value={ context }>
-      { children }
+    <HeroContext.Provider value={context}>
+      {children}
     </HeroContext.Provider>
   );
 }

@@ -8,8 +8,8 @@ function HeroCard() {
   return (
     <main className="hero-card-container">
       <section className="hero-card">
-        <p>{id}</p>
-        <p>{name}</p>
+        <p>id: {id}</p>
+        <p>name: {name}</p>
         <img
           src={`${path}/portrait_xlarge.${extension}`}
           alt={name}
